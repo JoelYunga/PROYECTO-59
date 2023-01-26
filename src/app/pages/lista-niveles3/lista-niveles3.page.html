@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Comprender</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+
+        <ion-item *ngFor="let levels of list">
+            <!-- <div *ngIf="getProgress(levels.id)>0; then thenBlock else elseBlock"></div> -->
+            <div *ngIf="isInit(levels.nivel); then thenBlock else elseBlock"></div>
+
+            <ng-template #thenBlock>
+                <ion-label size="small" [routerLink]="['/niv-comp',levels.id_nivel]">{{levels.nivel}}</ion-label>
+                <div>
+                    <circle-progress [percent]=getProgress(levels.nivel) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                </div>
+
+            </ng-template>
+
+            <ng-template #elseBlock>
+                <div *ngIf="levels.nivel =='Nivel 1'; then op1 else op2"></div>
+                <ng-template #op1>
+                    <ion-label size="small" [routerLink]="['/niv-comp',levels.id_nivel]">{{levels.nivel}}</ion-label>
+                    <div>
+                        <circle-progress [percent]=0 [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                    </div>
+                </ng-template>
+                <ng-template #op2>
+                    <ion-label size="small" (click)="presentAlertButtons()">{{levels.nivel}}</ion-label>
+                </ng-template>
+
+
+
+            </ng-template>
+        </ion-item>
+    </ion-list>
+
+
+
+</ion-content>

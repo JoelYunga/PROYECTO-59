@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Niveles Lectura</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="long>0; then thenBlock else elseBlock"></div>
+
+    <ng-template #thenBlock>
+        <ion-list>
+
+            <ion-item *ngFor="let levels of list">
+
+                <div *ngIf="getProgress(levels.id)>0; then op1"></div>
+                <ng-template #op1>
+                    <ion-label size="small" [routerLink]="['/repasar-lec',levels.id_nivel]">{{levels.title}}</ion-label>
+                    <div>
+                        <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                    </div>
+                </ng-template>
+            </ion-item>
+        </ion-list>
+
+    </ng-template>
+
+    <ng-template #elseBlock>
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Aún no has practicado</ion-card-title>
+                <br>
+                <ion-img src="../../../assets/imagenes/sadmonkey.png"></ion-img>
+            </ion-card-header>
+            <div align="center">
+                <ion-card-content>
+                    No has empezado ningún Nivel
+                </ion-card-content>
+
+            </div>
+
+        </ion-card>
+
+    </ng-template>
+</ion-content>

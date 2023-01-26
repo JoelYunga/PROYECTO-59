@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Progreso Lectura</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="long>0; then thenBlock else elseBlock"></div>
+
+    <ng-template #thenBlock>
+        <ion-list>
+
+            <ion-item *ngFor="let levels of list">
+
+                <ion-label size="small" (click)="openIonModal(levels.id_nivel)">{{levels.title}}</ion-label>
+                <div>
+                    <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                </div>
+            </ion-item>
+        </ion-list>
+
+    </ng-template>
+
+    <ng-template #elseBlock>
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>No hay datos</ion-card-title>
+                <br>
+                <ion-img src="../../../assets/imagenes/sadmonkey.png"></ion-img>
+            </ion-card-header>
+            <div align="center">
+                <ion-card-content>
+                    El jugador no ha empezado a jugar
+                </ion-card-content>
+
+            </div>
+
+        </ion-card>
+
+    </ng-template>
+</ion-content>

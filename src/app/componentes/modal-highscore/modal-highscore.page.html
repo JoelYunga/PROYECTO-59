@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Puntajes Totales </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <ion-list>
+        <ion-item *ngFor="let users of lista">
+            <div *ngIf="users.id_usuario==idUser; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <div class="colorfull">
+                    <h5><b>#{{posLista(users.id_usuario)}} </b>&nbsp;</h5>
+                    <ion-label size="small"> {{users.nombre_hijo}}</ion-label>
+                    <img src="../../../assets/imagenes/points.png" alt="" width="10%" slot="end">{{users.taciertos*5}}
+                </div>
+            </ng-template>
+            <ng-template #elseBlock>
+                <div class="colort">
+                    <h5><b>#{{posLista(users.id_usuario)}} </b>&nbsp;</h5>
+                    <ion-label size="small"> {{users.nombre_hijo}}</ion-label>
+                    <img src="../../../assets/imagenes/points.png" alt="" width="10%" slot="end">{{users.taciertos*5}}
+
+                </div>
+
+            </ng-template>
+        </ion-item>
+
+    </ion-list>
+
+    <div align="center">
+        <ion-button (click)="closeModel()">Regresar</ion-button>
+    </div>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Estadísticas {{nombre}} </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <ion-card>
+        <img src='../../../assets/imagenes/check.png' alt="" class="title-image">
+        <ion-card-header>
+            <ion-card-title>Aciertos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{aciertos}}/10
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <img src='../../../assets/imagenes/wrong.png' alt="" class="title-image">
+        <ion-card-header>
+            <ion-card-title>Fallos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{fallos}}/10
+        </ion-card-content>
+    </ion-card>
+    <div align="center">
+        <ion-button (click)="closeModel()">Regresar</ion-button>
+    </div>
+
+</ion-content>

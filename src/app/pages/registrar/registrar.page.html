@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title style="text-align: center;">Registrar</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <div class="ion-text-center">
+        <img src="../../assets/imagenes/logo.png" width="40%" alt="">
+    </div>
+
+    <form [formGroup]="formularioRegistrar" (ngSubmit)="onSubmit()">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Nombre del Representante
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-input required formControlName="nombreP" type="text"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Nombre del Hijo
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-input required formControlName="nombreH" type="text"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Fecha de nacimiento
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-datetime min="2015-01-01" value="2015-01-01" formControlName="fechaN" placeholder="Seleccionar Fecha"></ion-datetime>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>Género</ion-label>
+                        <ion-select formControlName="genero" placeholder="Seleccione uno">
+                            <ion-select-option value="1">Masculino</ion-select-option>
+                            <ion-select-option value="2">Femenino</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Usuario
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-input required formControlName="usuario" type="email"></ion-input>
+
+                    </ion-item>
+                    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.usuario.errors?.pattern">
+                        Correo no válido.
+                      </span>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Contraseña
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-input required formControlName="password" type="password"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12"><br>
+                    <ion-button style="display: block;" color="primary" type="submit">
+                        Registrarse
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

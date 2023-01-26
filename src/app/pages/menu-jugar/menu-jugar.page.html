@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title style="text-align: center;">Jugar</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button (click)="reloadCurrentRoute()"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-text-center">
+        <br>
+        <br>
+        <!-- <img routerLink="/niv-leer" src="../../assets/imagenes/leer.png" width="35%" alt=""> -->
+        <img [routerLink]="['/lista-niveles']" src="../../assets/imagenes/leer.png" width="35%" alt="">
+        <br>
+        <br>
+        <br>
+        <br>
+        <img [routerLink]="['/lista-niveles2']" src="../../assets/imagenes/escribir.png" width="35%" alt="">
+        <!-- <h6 style="font-size: small;">Escribir</h6> -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <img [routerLink]="['/lista-niveles3']" src="../../assets/imagenes/ear.png" width="35%" alt="">
+        <!-- <h6 style="font-size: small;">Pronunciar</h6> -->
+    </div>
+</ion-content>
